@@ -76,9 +76,40 @@ header p strong { color: var(--gold); }
 }
 .kofi-slot { min-height: 36px; display: flex; align-items: center; }
 .kofi-slot .btn-container { margin: 0 !important; }
-footer { margin-top: 40px; padding-top: 16px; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px; max-width: 75ch; }
-footer p { margin: 0 0 8px; }
-footer a { color: var(--gold); }
+/* Footer: full width under both columns */
+.site-footer { grid-column: 1 / -1; margin-top: 48px; display: grid; gap: 20px; }
+.divider { display: flex; align-items: center; gap: 14px; color: var(--gold); font-size: 14px; }
+.divider::before, .divider::after { content: ""; flex: 1; height: 1px; }
+.divider::before { background: linear-gradient(90deg, transparent, rgba(242,193,78,.55)); }
+.divider::after { background: linear-gradient(90deg, rgba(242,193,78,.55), transparent); }
+.footer-panel {
+  display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 32px;
+  padding: 28px 32px; border-radius: 16px; border: 1px solid var(--line);
+  background: rgba(24, 20, 55, .7);
+  box-shadow: inset 0 1px 0 rgba(242,193,78,.12);
+}
+@media (max-width: 860px) { .footer-panel { grid-template-columns: minmax(0, 1fr); gap: 24px; padding: 22px 20px; } }
+.footer-col { min-width: 0; color: var(--muted); line-height: 1.6; }
+.footer-col p { margin: 0 0 12px; }
+.footer-col h3 {
+  margin: 0 0 12px; font: 700 14px/1.2 var(--font-display); letter-spacing: .12em; text-transform: uppercase; color: var(--gold);
+}
+.footer-col ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+.footer-col li { padding-left: 18px; position: relative; }
+.footer-col li::before { content: "º6"; position: absolute; left: 0; top: 0; color: var(--accent); font-size: 11px; }
+.footer-col a { color: var(--gold); text-underline-offset: 3px; }
+.footer-title {
+  margin: 0 !important; font: 900 22px/1.1 var(--font-display); letter-spacing: .04em; text-transform: uppercase;
+  background: linear-gradient(180deg, #fff1c4 0%, var(--gold) 45%, var(--gold-deep) 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.footer-by { margin: 4px 0 12px !important; font: 700 11px/1.2 var(--font-display); letter-spacing: .14em; text-transform: uppercase; }
+.footer-kofi {
+  display: inline-block; padding: 9px 16px; border-radius: 10px; text-decoration: none; font-weight: 600;
+  color: var(--gold) !important; border: 1px solid rgba(242,193,78,.6); background: rgba(242,193,78,.08);
+}
+.footer-kofi:hover { background: rgba(242,193,78,.18); }
+.legal { margin: 0; color: var(--muted); opacity: .75; font-size: 11.5px; line-height: 1.6; max-width: 90ch; }
 
 .searchbar { display: flex; gap: 8px; flex-wrap: wrap; }
 .searchbar input {
@@ -200,11 +231,6 @@ textarea#out { position: absolute; left: -9999px; }
     <div class="status" id="status">Try a search above.</div>
     <div class="grid" id="grid"></div>
     <button class="btn more" id="more" hidden>Load more</button>
-    <footer>
-      <p>Card data and images from <a href="https://scryfall.com" target="_blank" rel="noopener">Scryfall</a>. Prices are TCGplayer market prices reported by Scryfall and may be a day or more old. Not affiliated with or endorsed by Scryfall or Archidekt.</p>
-      <p>Card Picker is unofficial Fan Content permitted under the Fan Content Policy. Not approved/endorsed by Wizards. Portions of the materials used are property of Wizards of the Coast. ©Wizards of the Coast LLC.</p>
-      <p>Your list is saved only in this browser. Like the tool? <a href="https://ko-fi.com/sqn" target="_blank" rel="noopener">Buy me a coffee on Ko-fi</a>.</p>
-    </footer>
   </main>
 
   <aside aria-label="Decklist">
@@ -224,6 +250,30 @@ textarea#out { position: absolute; left: -9999px; }
     <p class="toast" id="toast"></p>
     <textarea id="out" aria-hidden="true" tabindex="-1"></textarea>
   </aside>
+  <footer class="site-footer">
+    <div class="divider" aria-hidden="true"><span>&#10022;</span></div>
+    <div class="footer-panel">
+      <div class="footer-col footer-brand">
+        <p class="footer-title">Card Picker</p>
+        <p class="footer-by">by Side Quest Nexus</p>
+        <p>Find cards on Scryfall, build your list here, paste it into Archidekt. No typing card names one at a time.</p>
+      </div>
+      <div class="footer-col">
+        <h3>Credits</h3>
+        <ul>
+          <li>Card data and images from <a href="https://scryfall.com" target="_blank" rel="noopener">Scryfall</a>.</li>
+          <li>Prices are TCGplayer market prices reported by Scryfall and may be a day or more old.</li>
+          <li>Your list is saved only in this browser.</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Support</h3>
+        <p>Card Picker is free to use. If it saves you time, a coffee helps keep it running and growing.</p>
+        <a class="footer-kofi" href="https://ko-fi.com/sqn" target="_blank" rel="noopener">Support on Ko-fi</a>
+      </div>
+    </div>
+    <p class="legal">Not affiliated with or endorsed by Scryfall or Archidekt. Card Picker is unofficial Fan Content permitted under the Fan Content Policy. Not approved/endorsed by Wizards. Portions of the materials used are property of Wizards of the Coast. &copy;Wizards of the Coast LLC.</p>
+  </footer>
 </div>
 
 <script>
