@@ -5,7 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Card Picker · Side Quest Nexus</title>
 <meta name="description" content="A distraction-free scratchpad for brewing Magic: The Gathering decks. Search with Scryfall syntax, collect candidates with +, see prices as you go, then paste the keepers into Moxfield, Archidekt or any deck builder.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='7' y='3' width='18' height='26' rx='3' fill='%23231d52' stroke='%23f2c14e' stroke-width='2'/%3E%3Cpath d='M16 10v12M10 16h12' stroke='%23f2c14e' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="icon" type="image/png" href="assets/favicon-64.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Side Quest Nexus">
+<meta property="og:title" content="Card Picker · Side Quest Nexus">
+<meta property="og:description" content="A distraction-free scratchpad for brewing Magic decks. Search with Scryfall syntax, collect candidates with +, see prices, paste the keepers into any deck builder.">
+<meta property="og:url" content="https://cards.sidequestnexustcg.com/">
+<meta property="og:image" content="https://cards.sidequestnexustcg.com/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@sidequestnexTCG">
 <script defer src="https://cloud.umami.is/script.js" data-website-id="3518f613-2ea5-4522-bfbe-83f4ebee01aa"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@400;500;600&display=swap">
@@ -64,6 +75,10 @@ button { cursor: pointer; }
 header p { margin: 0 0 16px; color: var(--muted); }
 header p strong { color: var(--gold); }
 .brand { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 6px; }
+.brand-id { display: flex; align-items: center; gap: 14px; min-width: 0; }
+.brand-logo { flex: none; display: block; line-height: 0; }
+.brand-logo img { width: 72px; height: 72px; filter: drop-shadow(0 4px 14px rgba(79,216,240,.25)); }
+@media (max-width: 480px) { .brand-logo img { width: 56px; height: 56px; } .brand h1 { font-size: 28px; } }
 .brand h1 {
   margin: 0; font: 900 34px/1.05 var(--font-display); letter-spacing: .04em; text-transform: uppercase;
   background: linear-gradient(180deg, #fff1c4 0%, var(--gold) 45%, var(--gold-deep) 100%);
@@ -114,7 +129,9 @@ header p strong { color: var(--gold); }
   display: inline-flex; align-items: center; gap: 8px; font-weight: 600; text-decoration: none;
   color: var(--fg) !important; padding: 7px 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface-2);
 }
-.footer-social svg { color: #6aa3ff; }
+.footer-social svg { flex: none; }
+.socials { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+.follow-label { margin: 4px 0 8px !important; font: 700 12px/1.2 var(--font-display); letter-spacing: .12em; text-transform: uppercase; color: var(--gold); }
 .footer-social:hover { border-color: var(--accent); }
 .legal { margin: 0; color: var(--muted); opacity: .75; font-size: 11.5px; line-height: 1.6; max-width: 90ch; }
 
@@ -214,7 +231,10 @@ textarea#out { position: absolute; left: -9999px; }
   <main>
     <header>
       <div class="brand">
-        <h1>Card Picker <span class="by">by Side Quest Nexus</span></h1>
+        <div class="brand-id">
+          <a href="https://sidequestnexustcg.com" class="brand-logo" aria-label="Side Quest Nexus"><img src="assets/logo-256.png" alt="Side Quest Nexus logo" width="72" height="72"></a>
+          <h1>Card Picker <span class="by">by Side Quest Nexus</span></h1>
+        </div>
         <div class="kofi-slot">
           <script src="https://storage.ko-fi.com/cdn/widget/Widget_2.js"></script>
           <script>try { kofiwidget2.init('Support me on Ko-fi', '#8b5cf6', 'R6R11R2VWJ'); kofiwidget2.draw(); } catch (e) {}</script>
@@ -264,10 +284,12 @@ textarea#out { position: absolute; left: -9999px; }
         <p class="footer-title">Card Picker</p>
         <p class="footer-by">by Side Quest Nexus</p>
         <p>Brew outside the deck builder. No account, no suggestions pulling your eye, no typing card names one at a time.</p>
-        <a class="footer-social" data-umami-event="facebook-footer" href="https://www.facebook.com/sidequestnexustcg" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"/></svg>
-          Follow Side Quest Nexus on Facebook
-        </a>
+        <p class="follow-label">Follow Side Quest Nexus</p>
+        <div class="socials">
+          <a class="footer-social" data-umami-event="facebook-footer" href="https://www.facebook.com/sidequestnexustcg" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="#6aa3ff" d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"/></svg> Facebook</a>
+          <a class="footer-social" data-umami-event="x-footer" href="https://x.com/sidequestnexTCG" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M18.24 2.25h3.31l-7.23 8.26 8.5 11.24h-6.66l-5.21-6.82-5.97 6.82H1.68l7.73-8.84L1.25 2.25h6.83l4.71 6.23 5.45-6.23zm-1.16 17.52h1.83L7.08 4.13H5.12z"/></svg> X</a>
+          <a class="footer-social" data-umami-event="youtube-footer" href="https://www.youtube.com/@SideQuestNexusTCG" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><path fill="#ff4e45" d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8z"/><path fill="#fff" d="M9.6 15.6 15.8 12 9.6 8.4z"/></svg> YouTube</a>
+        </div>
       </div>
       <div class="footer-col">
         <h3>Credits</h3>
