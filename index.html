@@ -110,6 +110,12 @@ header p strong { color: var(--gold); }
   color: var(--gold) !important; border: 1px solid rgba(242,193,78,.6); background: rgba(242,193,78,.08);
 }
 .footer-kofi:hover { background: rgba(242,193,78,.18); }
+.footer-social {
+  display: inline-flex; align-items: center; gap: 8px; font-weight: 600; text-decoration: none;
+  color: var(--fg) !important; padding: 7px 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface-2);
+}
+.footer-social svg { color: #6aa3ff; }
+.footer-social:hover { border-color: var(--accent); }
 .legal { margin: 0; color: var(--muted); opacity: .75; font-size: 11.5px; line-height: 1.6; max-width: 90ch; }
 
 .searchbar { display: flex; gap: 8px; flex-wrap: wrap; }
@@ -258,6 +264,10 @@ textarea#out { position: absolute; left: -9999px; }
         <p class="footer-title">Card Picker</p>
         <p class="footer-by">by Side Quest Nexus</p>
         <p>Brew outside the deck builder. No account, no suggestions pulling your eye, no typing card names one at a time.</p>
+        <a class="footer-social" data-umami-event="facebook-footer" href="https://www.facebook.com/sidequestnexustcg" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"/></svg>
+          Follow Side Quest Nexus on Facebook
+        </a>
       </div>
       <div class="footer-col">
         <h3>Credits</h3>
