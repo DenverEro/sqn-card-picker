@@ -72,13 +72,25 @@ button { cursor: pointer; }
 }
 @media (max-width: 860px) { .app { grid-template-columns: minmax(0, 1fr); } }
 
-header p { margin: 0 0 16px; color: var(--muted); }
-header p strong { color: var(--gold); }
-.brand { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 6px; }
-.brand-id { display: flex; align-items: center; gap: 14px; min-width: 0; }
-.brand-logo { flex: none; display: block; line-height: 0; }
-.brand-logo img { width: 72px; height: 72px; filter: drop-shadow(0 4px 14px rgba(79,216,240,.25)); }
-@media (max-width: 480px) { .brand-logo img { width: 56px; height: 56px; } .brand h1 { font-size: 28px; } }
+/* Logo fills the left column; title, byline and intro share one left edge. */
+.brand {
+  display: grid; grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-areas: "logo title kofi" "logo intro intro";
+  column-gap: 20px; row-gap: 10px; align-items: center; margin-bottom: 16px;
+}
+.brand-logo { grid-area: logo; align-self: center; display: block; line-height: 0; }
+.brand-logo img { width: 132px; height: 132px; filter: drop-shadow(0 4px 14px rgba(79,216,240,.25)); }
+.brand h1 { grid-area: title; }
+.brand .kofi-slot { grid-area: kofi; justify-self: end; }
+.brand p { grid-area: intro; align-self: start; margin: 0; color: var(--muted); max-width: 70ch; }
+.brand p strong { color: var(--gold); }
+/* Phones: logo sits beside the title only, intro and Ko-fi go full width. */
+@media (max-width: 600px) {
+  .brand { grid-template-columns: auto minmax(0, 1fr); grid-template-areas: "logo title" "intro intro" "kofi kofi"; column-gap: 14px; }
+  .brand-logo img { width: 84px; height: 84px; }
+  .brand .kofi-slot { justify-self: start; }
+  .brand h1 { font-size: 28px; }
+}
 .brand h1 {
   margin: 0; font: 900 34px/1.05 var(--font-display); letter-spacing: .04em; text-transform: uppercase;
   background: linear-gradient(180deg, #fff1c4 0%, var(--gold) 45%, var(--gold-deep) 100%);
@@ -233,17 +245,15 @@ textarea#out { position: absolute; left: -9999px; }
   <main>
     <header>
       <div class="brand">
-        <div class="brand-id">
-          <a href="https://sidequestnexustcg.com" class="brand-logo" aria-label="Side Quest Nexus"><img src="assets/logo-256.png" alt="Side Quest Nexus logo" width="72" height="72"></a>
-          <h1>Card Picker <span class="by">by Side Quest Nexus</span></h1>
-        </div>
+        <a href="https://sidequestnexustcg.com" class="brand-logo" aria-label="Side Quest Nexus"><img src="assets/logo-256.png" alt="Side Quest Nexus logo" width="132" height="132"></a>
+        <h1>Card Picker <span class="by">by Side Quest Nexus</span></h1>
         <div class="kofi-slot">
           <script src="https://storage.ko-fi.com/cdn/widget/Widget_2.js"></script>
           <script>try { kofiwidget2.init('Support me on Ko-fi', '#8b5cf6', 'R6R11R2VWJ'); kofiwidget2.draw(); } catch (e) {}</script>
           <noscript><a href="https://ko-fi.com/sqn" style="color:var(--gold)">Support me on Ko-fi</a></noscript>
         </div>
+        <p>A distraction-free scratchpad for brewing. Search with Scryfall syntax, collect candidates with <strong>+</strong>, see prices as you go, then paste the keepers into Moxfield, Archidekt, or any deck builder.</p>
       </div>
-      <p>A distraction-free scratchpad for brewing. Search with Scryfall syntax, collect candidates with <strong>+</strong>, see prices as you go, then paste the keepers into Moxfield, Archidekt, or any deck builder.</p>
     </header>
     <form class="searchbar" id="search-form">
       <input id="q" type="search" placeholder='e.g. id:sultai o:"draw a card" cmc<=3' autocomplete="off" aria-label="Scryfall search">
